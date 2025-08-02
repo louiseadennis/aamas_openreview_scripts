@@ -2,8 +2,7 @@ import openreview
 import client_object
 
 client = client_object.client
-
-venue_id = 'AAMAS/2026/Test'
+venue_id = client_object.venue_id
 
 reply_type = "Meta_Review" #also: "Meta_Review","Official_Comment", "Decision", "Rebuttal" etc.
 submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission',details='replies')

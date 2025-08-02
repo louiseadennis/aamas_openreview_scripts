@@ -3,7 +3,7 @@ import client_object
 import datetime
 
 client = client_object.client
-venue_id = 'AAMAS/2026/Test'
+venue_id = 'AAMAS/2026/Test' #Note importing from client_object to avoid using on real site by mistake
 
 #reply_type = "Official_Review" #also: "Meta_Review","Official_Comment", "Decision", "Rebuttal" etc.
 submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission',details='replies')
