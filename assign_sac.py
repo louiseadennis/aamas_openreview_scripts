@@ -1,22 +1,39 @@
 import openreview
 import client_object
+import sys
+
+# if called with 1 as command line argument the proposed assigments will actually get posted to OpenReview
+if sys.argv[1] == "1":
+    print("posting")
 
 client = client_object.client
 venue_id = client_object.venue_id
 
+registration_forum = 'vSikVyOdps' #found this id by running the get_venue_info script.
 
 
-areas = {}
-areas['Modelling and Simluation of Societies (SIM)'] = ['~Louise_Sellers1']
-areas['Robotics and Control (ROBOT)'] = ['~Rafael_C._Cardoso1','~Mengwei_Xu1','~Louise_Sellers1']
-areas['Engineering and Analysis of Multiagent Systems (EMAS)'] = ['~Rafael_C._Cardoso1','~Louise_Sellers1']
-areas['Generative and Agenti AI (GAAI)'] = ['~Mengwei_Xu1','~Rafael_C._Cardoso1']
-areas['Learning and Adaptation (LEARN)'] = ['~Louise_A._Dennis1']
+# Get all replies to the registration forum
+notes = client.get_all_notes(replyto=registration_forum)
+
+# Create a dictionary with profile_id : [subject_area]
+registrations = {}
+for n in notes:
+    signature = n.signatures[0]
+    profile = client.get_profile(signature)
+    profile_id = profile.id
+    if (not profile_id in registrations):
+        try:
+            registrations[profile_id] = n.content['area']['value']
+        except:
+            print(profile_id)
+            print("no area")
+
+
+areas = {area: sac for sac, area in registrations.items()}
 
 acs = {}
 
-venue_id = 'AAMAS/2026/Test'
-senior_area_chairs_proposed_assignment_id = 'AAMAS/2026/Test/Senior_Area_Chairs/-/Proposed_Assignment'
+senior_area_chairs_assignment_id = f'{venue_id}/Senior_Area_Chairs/-/Assignment'
 
 venue_group = client.get_group(venue_id)
 
@@ -39,8 +56,20 @@ for note in submissions:
         allowed[title] = []
         title_id[title] = id
 
-        for ac in ac_profiles:
-            if ac.id in areas[area]:
+        if (area in areas):
+            for ac in ac_profiles:
+                if ac.id in areas[area]:
+                    good = True
+                    for author_id in note.content['authorids']['value']:
+                        conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
+                        if len(conflicts_for_reviewer) != 0:
+                            good = False
+                            break
+                    if good:
+                        allowed[title].append(ac.id)
+        else:
+            # This shouldn't happen but if there are no acs for the area of this paper then assign all of them
+            for ac in ac_profiles:
                 good = True
                 for author_id in note.content['authorids']['value']:
                     conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
@@ -58,6 +87,7 @@ assigned = {}
 for paper in allowed.keys():
     min_ac = 100
     min_ac_id = ""
+    acs[min_ac_id] = 0
     for ac_id in allowed[paper]:
         if acs[ac_id] < min_ac:
             min_ac_id = ac_id
@@ -68,13 +98,17 @@ for paper in allowed.keys():
 assignment_invitation_id = venue_group.content['senior_area_chairs_assignment_id']['value']
     
 for paper in assigned.keys():
-    client.post_edge(openreview.api.Edge(
-        invitation=senior_area_chairs_proposed_assignment_id,
+    print(title_id[paper])
+    print(assigned[paper])
+    if (sys.argv[1] == "1" and assigned[paper] != ""):
+        client.post_edge(openreview.api.Edge(
+        invitation=assignment_invitation_id,
         signatures=[venue_id],
         head=title_id[paper],
         tail=assigned[paper],
         weight=1,
-    ))
+            ))
+        print("posted")
     
                     
         
