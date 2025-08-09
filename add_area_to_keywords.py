@@ -1,0 +1,32 @@
+import openreview
+import client_object
+
+client = client_object.client
+venue_id = client_object.venue_id
+
+submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission')
+edit_invitation=f'{venue_id}/-/Edit'
+
+for note in submissions:
+    #print(note.content['area']['value'])
+    try:
+        if note.content.get("area").get('value') == 'Robotics and Control (ROBOT)':
+            keywords = note.content.get('keywords').get('value')
+            if 'ROBOT' not in keywords:
+                #print(note)
+                print('ROBOT not in keywords')
+                keywords.append('ROBOT')
+                content = note.content
+                content.get('keywords').update({'value': keywords})
+                print(content)
+                client.post_note_edit(invitation=edit_invitation,
+                                        signatures=[venue_id],
+                                        note=openreview.api.Note(
+                                        id=note.id,
+                                        readers=note.readers,
+                                        content=content
+                                                                 )
+                                                                 )
+                print("updated")
+    except:
+        print("no area")
