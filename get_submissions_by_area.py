@@ -58,7 +58,7 @@ for note in submissions:
 print(learn_string + ":" + str(learn_count) + " (predicted 250 papers)")
 print(gaai_string + ":" + str(gaai_count) + " (predicted 100 papers)")
 print(gtep_string + ":" + str(gtep_count) + " (predicted 200 papers)")
-print(coine_string + ":" + str(coine_count) + " (predicted 60 papers")
+print(coine_string + ":" + str(coine_count) + " (predicted 60 papers)")
 print(sops_string + ":" + str(sops_count) + " (predicted 100 papers)")
 print(rr_string + ":" + str(rr_count) + " (predicted 100 papers)")
 print(emas_string + ":" + str(emas_count) + " (predicted 80 papers)")
