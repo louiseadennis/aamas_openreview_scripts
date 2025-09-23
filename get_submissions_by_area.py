@@ -51,7 +51,7 @@ for note in submissions:
         if note.content['area']['value'] == robot_string:
             robot_count = robot_count + 1
         if note.content['area']['value'] == ia_string:
-            rr_count = ia_count + 1
+            ia_count = ia_count + 1
         if note.content['area']['value'] == rr_string:
             rr_count = rr_count + 1
   
