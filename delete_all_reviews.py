@@ -1,6 +1,10 @@
 import openreview
 import client_object
 import datetime
+import sys
+
+print("If you really want to do this you will need to edit out the next line of code")
+sys.exit()
 
 client = client_object.client
 venue_id = 'AAMAS/2026/Test' # not importing for client_object to avoid using on real site by mistake
