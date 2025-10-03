@@ -32,4 +32,7 @@ for ac in ac_profiles:
     if (not flag):
         print(ac.id)
         print("no area")
+    else:
+        print(ac.id)
+        print("has registration notes")
 

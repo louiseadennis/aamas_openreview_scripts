@@ -11,59 +11,60 @@ venue_id = client_object.venue_id
 # Create a dictionary with profile_id : [subject_area]
 registrations = {}
 areas = {}
-registrations['~Angelo_Ferrando1'] = 'Engineering and Analysis of Multiagent Systems (EMAS)'
-registrations['~Prashant_Doshi1'] = 'Generative and Agentic AI (GAAI)'
-registrations['~Sarah_Keren1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Jaime_Sichman1'] = 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)'
 registrations['~Nirav_Ajmeri1'] = 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)'
-registrations['~Noam_Hazon1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Karthik_Abinav_Sankararaman1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Filippo_Bistaffa1'] = 'Search, Optimization, Planning, and Scheduling (SOPS)'
-registrations['svetlanaobraztsova@cunet.carleton.ca'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['spq7wp@virginia.edu'] = 'Learning and Adaptation (LEARN)'
-registrations['valli@liverpool.ac.uk'] = 'Representation and Reasoning (RR)'
-registrations['~Tan_Minh_Nguyen1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Alan_Tsang1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Bo_An2'] = 'Learning and Adaptation (LEARN)'
-registrations['~Niclas_Boehmer1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Yali_Du1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Fabian_Lorig1'] = 'Modelling and Simulation of Societies (SIM)'
-registrations['~Brittany_Duncan1'] = 'Human-Agent Interaction (HAI)'
-registrations['~Roni_Stern1'] = 'Representation and Reasoning (RR)'
-registrations['~Omer_Lev1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Maria_Vanina_Martinez1'] = 'Representation and Reasoning (RR)'
-registrations['~Kun_Shao1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Yasser_Mohammad1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Maria_L._Gini1'] = 'Robotics and Control (ROBOT)'
-registrations['~Francisco_Cruz1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Minming_Li1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Karl_Tuyls1'] = 'Generative and Agentic AI (GAAI)'
-registrations['~Zehong_Cao1'] = 'Innovative Applications (IA)'
-registrations['~Shah_Jamal_Alam1'] = 'Representation and Reasoning (RR)'
-registrations['~Shuai_Li3'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Roman_Barták1'] = 'Representation and Reasoning (RR)'
-registrations['~Gauthier_Picard2'] = 'Innovative Applications (IA)'
-registrations['~Nicola_Basilico1'] = 'Robotics and Control (ROBOT)'
-registrations['~Beatrice_Biancardi1'] = 'Human-Agent Interaction (HAI)'
-registrations['~Zahia_Guessoum1'] = 'Engineering and Analysis of Multiagent Systems (EMAS)'
-registrations['~Roberta_Calegari1'] = 'Representation and Reasoning (RR)'
-registrations['~Vincent_Corruble1'] = 'Learning and Adaptation (LEARN)'
-registrations['~Neeldhara_Misra1'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Sara_Bernardini1'] = 'Representation and Reasoning (RR)'
 registrations['~Reyhan_Aydoğan1'] = 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)'
 registrations['leandro.becker@ufsc.br'] = 'Engineering and Analysis of Multiagent Systems (EMAS)'
-registrations['~Franziska_Klügl1'] = 'Representation and Reasoning (RR)'
-registrations['~Maria_Silvia_Pini2'] = 'Game Theory and Economic Paradigms (GTEP)'
-registrations['~Brian_Logan1'] = 'Representation and Reasoning (RR)'
+registrations['~Angelo_Ferrando1'] = 'Engineering and Analysis of Multiagent Systems (EMAS)'
+registrations['~Zahia_Guessoum1'] = 'Engineering and Analysis of Multiagent Systems (EMAS)'
+registrations['~Prashant_Doshi1'] = 'Generative and Agentic AI (GAAI)'
 registrations['~Kate_Larson1'] = 'Generative and Agentic AI (GAAI)'
+registrations['~Karl_Tuyls1'] = 'Generative and Agentic AI (GAAI)'
+registrations['~Niclas_Boehmer1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Noam_Hazon1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Omer_Lev1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Minming_Li1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Shuai_Li3'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Neeldhara_Misra1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Svetlana_Obraztsova1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Maria_Silvia_Pini2'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Alan_Tsang1'] = 'Game Theory and Economic Paradigms (GTEP)'
+registrations['~Beatrice_Biancardi1'] = 'Human-Agent Interaction (HAI)'
+registrations['~Brittany_Duncan1'] = 'Human-Agent Interaction (HAI)'
 registrations['~Matthias_Scheutz1'] = 'Human-Agent Interaction (HAI)'
-registrations['~Jaime_Sichman1'] = 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)'
+registrations['~Zehong_Cao1'] = 'Innovative Applications (IA)'
+registrations['~Gauthier_Picard2'] = 'Innovative Applications (IA)'
+registrations['~Karthik_Abinav_Sankararaman1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Bo_An2'] = 'Learning and Adaptation (LEARN)'
+registrations['~Vincent_Corruble1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Francisco_Cruz1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Yali_Du1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Ferdinando_Fioretto1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Sarah_Keren1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Yasser_Mohammad1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Tan_Minh_Nguyen1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Kun_Shao1'] = 'Learning and Adaptation (LEARN)'
+registrations['~Nicola_Basilico1'] = 'Robotics and Control (ROBOT)'
+registrations['~Maria_L._Gini1'] = 'Robotics and Control (ROBOT)'
+registrations['~Roberta_Calegari1'] = 'Representation and Reasoning (RR)'
+registrations['~Brian_Logan1'] = 'Representation and Reasoning (RR)'
+registrations['~Maria_Vanina_Martinez1'] = 'Representation and Reasoning (RR)'
+registrations['valli@liverpool.ac.uk'] = 'Representation and Reasoning (RR)'
+registrations['~Shah_Jamal_Alam1'] = 'Modelling and Simluation of Societies (SIM)'
+registrations['~Franziska_Klügl1'] = 'Modelling and Simluation of Societies (SIM)'
+registrations['~Fabian_Lorig1'] = 'Modelling and Simluation of Societies (SIM)'
+registrations['~Filippo_Bistaffa1'] = 'Search, Optimization, Planning, and Scheduling (SOPS)'
+registrations['~Roni_Stern1'] = 'Search, Optimization, Planning, and Scheduling (SOPS)'
+registrations['~Roman_Barták1'] = 'Search, Optimization, Planning, and Scheduling (SOPS)'
+registrations['~Sara_Bernardini1'] = 'Search, Optimization, Planning, and Scheduling (SOPS)'
 
 
-area_list = {'Engineering and Analysis of Multiagent Systems (EMAS)','Generative and Agentic AI (GAAI)', 'Learning and Adaptation (LEARN)', 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)', 'Game Theory and Economic Paradigms (GTEP)', 'Search, Optimization, Planning, and Scheduling (SOPS)', 'Representation and Reasoning (RR)', 'Modelling and Simulation of Societies (SIM)', 'Human-Agent Interaction (HAI)', 'Robotics and Control (ROBOT)',
+
+area_list = {'Engineering and Analysis of Multiagent Systems (EMAS)','Generative and Agentic AI (GAAI)', 'Learning and Adaptation (LEARN)', 'Coordination, Organisations, Institutions, Norms and Ethics (COINE)', 'Game Theory and Economic Paradigms (GTEP)', 'Search, Optimization, Planning, and Scheduling (SOPS)', 'Representation and Reasoning (RR)', 'Modelling and Simluation of Societies (SIM)', 'Human-Agent Interaction (HAI)', 'Robotics and Control (ROBOT)',
                     'Innovative Applications (IA)'}
 
 for area in area_list:
-    print(area)
+    # print(area)
     areas[area] = []
     
 for sac in registrations.keys():
@@ -92,14 +93,21 @@ ac_profiles = openreview.tools.get_profiles(client, ac_ids)
 
 allowed = {}
 title_id = {}
+author_profiles = {}
+conflicts = {}
+problem_title="Collaborative Medical Triage under Uncertainty: A Multi-Agent Dynamic Matching Approach"
 
 for note in submissions:
     if (not f'{venue_id}/-/Desk_Rejected_Submission' in note.invitations):
         title = note.content['title']['value']
+        
         try:
             area = note.content['area']['value']
+            if (title == problem_title):
+                print("found area")
+                print(area)
             id = note.id
-            print(area)
+                            # print(area)
             allowed[title] = []
             title_id[title] = id
 
@@ -111,24 +119,39 @@ for note in submissions:
                         # print(ac.id)
                         good = True
                         for author_id in note.content['authorids']['value']:
-                            conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
-                            if len(conflicts_for_reviewer) != 0:
-                                print("vetoed")
+                            if (ac.id in conflicts.keys()):
+                                if (author_id in conflicts.get(ac.id)):
+                                                    # print("vetoed")
+                                    if (title ==  problem_title):
+                                        print("vetoed")
+                                    good = False
+                            if (author_id in author_profiles.keys() and good):
+                                conflicts_for_reviewer = openreview.tools.get_conflicts(author_profiles.get(author_id), ac)
+                            elif (good):
+                                author_profiles[author_id] = openreview.tools.get_profiles(client, [author_id])
+                                conflicts_for_reviewer = openreview.tools.get_conflicts(author_profiles.get(author_id), ac)
+                                
+                            if (len(conflicts_for_reviewer) != 0 and good):
+                                if ((ac.id) in conflicts.keys()):
+                                    conflicts.get(ac.id).append(author_id)
+                                    if (title ==  problem_title):
+                                        print("vetoed")
+                                    good = False
+                                else:
+                                    conflicts[ac.id] = []
+                                    conflicts.get(ac.id).append(author_id)
+                                    if (title ==  problem_title):
+                                        print("vetoed")
+                                    good = False
                                 break
                         if good:
                             allowed[title].append(ac.id)
             else:
-                # This shouldn't happen but if there are no acs for the area of this paper then assign all of them
-                for ac in ac_profiles:
-                    good = True
-                    for author_id in note.content['authorids']['value']:
-                        conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
-                        if len(conflicts_for_reviewer) != 0:
-                            print("vetoed")
-                            good = False
-                            continue
-                    if good:
-                        allowed[title].append(ac.id)
+                # This shouldn't happen but if there are no acs for the area of this paper then check all of them
+                print("WARNING")
+                print(title)
+                print("No ACs")
+                
                         
             if (allowed[title] == []):
                 print("WARNING")
@@ -140,9 +163,11 @@ for note in submissions:
 
 acs = {}
 assignments = {}
+assignments_title_id = {}
 for ac in ac_profiles:
     acs[ac.id] = 0
     assignments[ac.id] = []
+    assignments_title_id[ac.id] = []
     
 assigned = {}
 for paper in allowed.keys():
@@ -156,9 +181,12 @@ for paper in allowed.keys():
     assigned[paper] = min_ac_id
     if (not min_ac_id == ""):
         assignments[min_ac_id].append(paper)
+        assignments_title_id[min_ac_id].append(title_id[paper])
+
     else:
         print("WARNING")
         print(paper)
+        print("No assignment")
     acs[min_ac_id] = acs[min_ac_id] + 1
     
 # assignment_invitation_id = venue_group.content['senior_area_chairs_assignment_id']['value']
@@ -173,6 +201,7 @@ for ac in assignments.keys():
     print(assignments.get(ac))
     print(len(assignments.get(ac)))
     print(registrations.get(ac))
+    print("assigned[\"" + ac + "\"] = " + str(assignments_title_id.get(ac)))
     print("\n")
     
                     
