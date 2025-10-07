@@ -9,106 +9,30 @@ if sys.argv[1] == "1":
 client = client_object.client
 venue_id = client_object.venue_id
 
-registration_forum = 'vSikVyOdps' #found this id by running the get_venue_info script.
-
-
-# Get all replies to the registration forum
-notes = client.get_all_notes(replyto=registration_forum)
-
-# Create a dictionary with profile_id : [subject_area]
-registrations = {}
-for n in notes:
-    signature = n.signatures[0]
-    profile = client.get_profile(signature)
-    profile_id = profile.id
-    if (not profile_id in registrations):
-        try:
-            registrations[profile_id] = n.content['area']['value']
-        except:
-            print(profile_id)
-            print("no area")
-
-
-areas = {area: sac for sac, area in registrations.items()}
-
-acs = {}
-
-senior_area_chairs_assignment_id = f'{venue_id}/Senior_Area_Chairs/-/Assignment'
-
 venue_group = client.get_group(venue_id)
 
-submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission')
-
-author_ids = []
-
-ac_ids = client.get_group(f'{venue_id}/Senior_Area_Chairs').members
-ac_profiles = openreview.tools.get_profiles(client, ac_ids)
-
-allowed = {}
-title_id = {}
-
-for note in submissions:
-    if (not f'{venue_id}/-/Desk_Rejected_Submission' in note.invitations):
-        title = note.content['title']['value']
-        area = note.content['area']['value']
-        id = note.id
-        print(area)
-        allowed[title] = []
-        title_id[title] = id
-
-        if (area in areas):
-            for ac in ac_profiles:
-                if ac.id in areas[area]:
-                    good = True
-                    for author_id in note.content['authorids']['value']:
-                        conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
-                        if len(conflicts_for_reviewer) != 0:
-                            good = False
-                            break
-                    if good:
-                        allowed[title].append(ac.id)
-        else:
-            # This shouldn't happen but if there are no acs for the area of this paper then assign all of them
-            for ac in ac_profiles:
-                good = True
-                for author_id in note.content['authorids']['value']:
-                    conflicts_for_reviewer = openreview.tools.get_conflicts(openreview.tools.get_profiles(client, [author_id]), ac)
-                    if len(conflicts_for_reviewer) != 0:
-                        good = False
-                        break
-                if good:
-                    allowed[title].append(ac.id)
-
-acs = {}
-for ac in ac_profiles:
-    acs[ac.id] = 0
-    
-assigned = {}
-for paper in allowed.keys():
-    min_ac = 100
-    min_ac_id = ""
-    acs[min_ac_id] = 0
-    for ac_id in allowed[paper]:
-        if acs[ac_id] < min_ac:
-            min_ac_id = ac_id
-            min_ac = acs[ac_id]
-    assigned[paper] = min_ac_id
-    acs[min_ac_id] = acs[min_ac_id] + 1
-    
+senior_area_chairs_assignment_id = f'{venue_id}/Senior_Area_Chairs/-/Proposed_Assignment'
 assignment_invitation_id = venue_group.content['senior_area_chairs_assignment_id']['value']
-    
-for paper in assigned.keys():
-    print(title_id[paper])
-    print(assigned[paper])
-    if (sys.argv[1] == "1" and assigned[paper] != ""):
-        client.post_edge(openreview.api.Edge(
-        invitation=assignment_invitation_id,
-        signatures=[venue_id],
-        head=title_id[paper],
-        tail=assigned[paper],
-        weight=1,
+print(assignment_invitation_id)
+
+assigned = {}
+#assigned["~Angelo_Ferrando1"] = ['v35iSwOSaA', 'CDFeZ78IeK', 'ErIWNSKCPe', 'tp2SDvQscg', 'noXYiuYnnr', 'C3c6LB2va9', 'vn1dLug1RP', 'lvrAgARBsF', '47zGa5Daf5', 'vQ9x0AJkvL', '3aFr2AYMeY', 'JHUY0tW947', 'nO69we5cvq', 'JxR48BnA7H', 'YXZOWrmili', 'lsGI35nza2', 'mNZ6p3Q4CP', 'GCmDek25zu', '19LmKvjXHO', 'jGBnSMc2w3', 'clRQxZT0tX', 'OU3iJhwooj', 'lJCulKvex5', 'dENftcOE7V', 'fllVBnrUA4', 'MeH5N8ajFG', '925jxBN2sB', 'SnKqq6SmRW', 'eboOUNvGyz', '2Kg5kyScDL', 'b6SASYB9pF', 'rzji6KYas3', 'jl0FI7nivW', 'b3MW3aJIAf', 'I2i5v0VueY', '7RRIztzQwK', 'qte0fJttjP', 'QFAB969qPB']
+
+
+for ac_id in assigned.keys():
+    for paper_id in assigned[ac_id]:
+        print(paper_id)
+        print(str(ac_id))
+        if (sys.argv[1] == "1"):
+            client.post_edge(openreview.api.Edge(
+            invitation=senior_area_chairs_assignment_id,
+            signatures=[venue_id],
+            head=paper_id,
+            tail=ac_id,
+            label="test",
+            weight=1,
             ))
-        print("posted")
+            print("posted")
     
                     
         
