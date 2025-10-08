@@ -6,7 +6,7 @@ venue_id = client_object.venue_id
 
 
 venue_group = client.get_group(venue_id)
-subject_score_invitation_id = f'{venue_id}/Reviewers/-/Subject_Score'
+subject_score_invitation_id = f'{venue_id}/Senior_Area_Chairs/-/Subject_Score'
 
 grouped_edges = client.get_grouped_edges(
     invitation = subject_score_invitation_id,

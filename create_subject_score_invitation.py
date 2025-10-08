@@ -12,7 +12,7 @@ client.post_invitation_edit(
     writers=[venue_id],
     signatures=[venue_id],
     invitation=openreview.api.Invitation(
-        id = f"{venue_id}/Reviewers/-/Subject_Score",
+        id = f"{venue_id}/Senior_Area_Chairs/-/Subject_Score",
         invitees = [venue_id,"OpenReview.net/Support"],
         readers = [venue_id],
         writers = [venue_id],
@@ -20,7 +20,7 @@ client.post_invitation_edit(
         edge = {
                 "id": {
                     "param": {
-                        "withInvitation": f"{venue_id}/Reviewers/-/Subject_Score",
+                        "withInvitation": f"{venue_id}/Senior_Area_Chairs/-/Subject_Score",
                         "optional": True
                     }
                 },
@@ -64,7 +64,7 @@ client.post_invitation_edit(
                     "param": {
                       "type": "profile",
                       "options": {
-                        "group": f"{venue_id}/Reviewers"
+                        "group": f"{venue_id}/Senior_Area_Chairs"
                       }
                     }
                   },

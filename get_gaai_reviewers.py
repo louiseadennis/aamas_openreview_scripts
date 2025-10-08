@@ -21,7 +21,7 @@ for n in notes:
             area = n.content['area']['value']
             if (area == "Generative and Agentic AI (GAAI)"):
                 print(profile_id)
-                print(n.content['area']['value'])
+                # print(n.content['area']['value'])
         except:
             print(profile_id)
             print("no area")
