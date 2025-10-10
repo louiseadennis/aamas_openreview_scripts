@@ -4,7 +4,7 @@ import client_object
 client = client_object.client
 venue_id = client_object.venue_id
 
-registration_forum = 'vSikVyOdps' #found this id by running the get_venue_info script.
+registration_forum = 'qPSvv8g0mL' #found this id by looking at the URL on the registration form.
 
 
 # Get all replies to the registration forum
@@ -30,19 +30,20 @@ submissions = client.get_all_notes(content={'venueid': under_review_id})
 
 # the subject area field in the submission note may be different per venue, for this example we'll use 'subject_area'
 for submission in submissions:
-    submission_id = submission.id
-    if 'area' in submission.content:
+    if (not f'{venue_id}/-/Desk_Rejected_Submission' in submission.invitations):
+        submission_id = submission.id
         submission_subject_area = submission.content['area']['value']
         print(f'submission: {submission.id}, subject area: {submission_subject_area}')
         # Check registrations for any value that matches s and print the corresponding key
         for reviewer_id, subject in registrations.items():
-                print(f"Reviewer ID: {reviewer_id}, Subject: {subject}")
-                client.post_edge(openreview.api.Edge(
-                        invitation=f'{venue_id}/Reviewers/-/Subject_Score',
-                        signatures=[venue_id],
-                        head=submission_id,
-                        tail=reviewer_id,
-                        weight=1,
-                        label=submission_subject_area
-                ))
+            if (subject == submission_subject_area or (subject == 'Modelling and Simulation of Societies (SIM)' and submission_subject_area == 'Modelling and Simluation of Societies (SIM)')):
+                    print(f"Reviewer ID: {reviewer_id}, Subject: {subject}, Submission Subject: {submission_subject_area}")
+                    client.post_edge(openreview.api.Edge(
+                                 invitation=f'{venue_id}/Area_Chairs/-/Subject_Score',
+                                 signatures=[venue_id],
+                                 head=submission_id,
+                                 tail=reviewer_id,
+                                 weight=1,
+                                 label=submission_subject_area
+                         ))
 
