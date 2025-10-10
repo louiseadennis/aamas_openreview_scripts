@@ -21,7 +21,7 @@ for note in submissions:
                 keywords.append(keyword)
                 content = note.content
                 content.get('keywords').update({'value': keywords})
-                print(content)
+                print(content['title']['value'])
                 client.post_note_edit(invitation=edit_invitation,
                                         signatures=[venue_id],
                                         note=openreview.api.Note(
