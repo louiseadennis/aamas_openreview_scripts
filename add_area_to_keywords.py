@@ -7,18 +7,19 @@ venue_id = client_object.venue_id
 submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission')
 edit_invitation=f'{venue_id}/-/Edit'
 
-area = 'Robotics and Control (ROBOT)'
-keyword = 'ROBOT'
+area = 'Engineering and Analysis of Multiagent Systems (EMAS)'
+keyword = 'EMAS'
 
 for note in submissions:
     #print(note.content['area']['value'])
     try:
         if note.content.get("area").get('value') == area:
             keywords = note.content.get('keywords').get('value')
-            if 'IA' not in keywords:
+            if keyword not in keywords:
                 #print(note)
                 print(keyword + ' not in keywords')
                 keywords.append(keyword)
+                print(keywords)
                 content = note.content
                 content.get('keywords').update({'value': keywords})
                 print(content['title']['value'])
