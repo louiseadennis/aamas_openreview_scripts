@@ -31,29 +31,30 @@ robot_count = 0
 ia_count = 0
 
 for note in submissions:
-    if 'area' in note.content:
-        if note.content['area']['value'] == learn_string:
-            learn_count = learn_count + 1
-        if note.content['area']['value'] == gaai_string:
-            gaai_count = gaai_count + 1
-        if note.content['area']['value'] == gtep_string:
-            gtep_count = gtep_count + 1
-        if note.content['area']['value'] == coine_string:
-            coine_count = coine_count + 1
-        if note.content['area']['value'] == sops_string:
-            sops_count = sops_count + 1
-        if note.content['area']['value'] == emas_string:
-            emas_count = emas_count + 1
-        if note.content['area']['value'] == sim_string:
-            sim_count = sim_count + 1
-        if note.content['area']['value'] == hai_string:
-            hai_count = hai_count + 1
-        if note.content['area']['value'] == robot_string:
-            robot_count = robot_count + 1
-        if note.content['area']['value'] == ia_string:
-            ia_count = ia_count + 1
-        if note.content['area']['value'] == rr_string:
-            rr_count = rr_count + 1
+    if (not f'{venue_id}/-/Desk_Rejected_Submission' in note.invitations):
+        if 'area' in note.content:
+            if note.content['area']['value'] == learn_string:
+                learn_count = learn_count + 1
+            if note.content['area']['value'] == gaai_string:
+                gaai_count = gaai_count + 1
+            if note.content['area']['value'] == gtep_string:
+                gtep_count = gtep_count + 1
+            if note.content['area']['value'] == coine_string:
+                coine_count = coine_count + 1
+            if note.content['area']['value'] == sops_string:
+                sops_count = sops_count + 1
+            if note.content['area']['value'] == emas_string:
+                emas_count = emas_count + 1
+            if note.content['area']['value'] == sim_string:
+                sim_count = sim_count + 1
+            if note.content['area']['value'] == hai_string:
+                hai_count = hai_count + 1
+            if note.content['area']['value'] == robot_string:
+                robot_count = robot_count + 1
+            if note.content['area']['value'] == ia_string:
+                ia_count = ia_count + 1
+            if note.content['area']['value'] == rr_string:
+                rr_count = rr_count + 1
   
 print(learn_string + ":" + str(learn_count) + " (predicted 250 papers)")
 print(gaai_string + ":" + str(gaai_count) + " (predicted 100 papers)")

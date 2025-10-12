@@ -12,4 +12,4 @@ edges = client.get_grouped_edges(
 )
 
 for edge in edges:
-    print(edge)
+    print(edge['id']['tail'] + " = " + str(edge['values'][0]['weight']))
