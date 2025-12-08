@@ -44,13 +44,13 @@ for rev in total_assignments.keys():
             Fifty_list.append(rev)
     else:
         print("NONE")
-        if (total_assignments.get(rev) > 1):
-            Zero_list.append(rev)
+        # if (total_assignments.get(rev) > 1):
+        Zero_list.append(rev)
             
 
-print("Less than 50% complete:")
-for rev in Fifty_list:
-    print(rev)
+        # print("Less than 50% complete:")
+        # for rev in Fifty_list:
+         #    print(rev)
     
 print("\n")
 print("None complete:")
