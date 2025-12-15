@@ -19,7 +19,7 @@ for n in notes:
     if (not profile_id in registrations):
         try:
             area = n.content['area']['value']
-            if (area == "Generative and Agentic AI (GAAI)"):
+            if (area == "Learning and Adaptation (LEARN)"):
                 print(profile_id)
                 # print(n.content['area']['value'])
         except:
