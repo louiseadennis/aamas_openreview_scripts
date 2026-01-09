@@ -4,6 +4,7 @@ import client_object
 client = client_object.client
 
 venue_id = client_object.venue_id
+client.impersonate(venue_id)
 
 reply_type = "Decision"
 submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission',details='replies')
@@ -40,7 +41,10 @@ for submission in submissions:
                             fullname = names[0]['fullname']
                         #print(fullname)
                         new_string = f'\"{fullname}\",'
+                        author_email = profile.get_preferred_email()
+                        email_string = f'\"{author_email}\"'
                         author_names.append(fullname)
+                        author_names.append(email_string)
                             
                     author_string = ",".join(author_names)
                     print(f'{submission.number},{decision},\"{title}\",{author_string}')
