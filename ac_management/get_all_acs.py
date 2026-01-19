@@ -14,9 +14,28 @@ ac_profiles = openreview.tools.get_profiles(client, ac_ids)
 count = 0
 for ac in ac_profiles:
     count = count + 1
-    print(ac)
+    # print(ac)
     
-print(count)
+    ac_string = ""
+    found_name = False
+    for name in ac.content['names']:
+        if ('preferred' in name.keys() and name['preferred']):
+            ac_string = ac_string + name['fullname']
+            found_name = True
+            break
+    if (not found_name):
+        ac_string = ac_string + ac.content['names'][0]['fullname']
+    
+    if ('history' in ac.content.keys() and ac.content['history']):
+            history = ac.content['history'][0]
+            institution = history['institution']['name']
+            
+            ac_string = ac_string + ", " + institution
+            
+    print(ac_string)
+
+    
+#print(count)
 
                     
         
