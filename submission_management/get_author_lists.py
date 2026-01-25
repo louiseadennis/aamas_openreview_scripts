@@ -12,5 +12,6 @@ submissions = client.get_all_notes(invitation=f'{venue_id}/-/Submission')
 
 for note in submissions:
     #print("a")
-    if (f'{venue_id}/-/Desk_Rejected_Submission' in note.invitations):
+    if (note.number == 1283):
         print(note.content['authorids']['value'])
+        auth

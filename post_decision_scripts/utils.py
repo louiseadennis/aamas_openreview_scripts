@@ -6,7 +6,7 @@ import country_converter as cc
 # from OpenReview
 class SubmissionSet:
     
-    def __init__(self,client=None,venue_id=None,accepted_only=False):
+    def __init__(self,client=None,venue_id=None,accepted_only=False,decision_set=["full"]):
 
         self.submissions = {}
 
@@ -14,9 +14,9 @@ class SubmissionSet:
             return
         
         venue_group = client.get_group(venue_id)
-        self.addSubmissions(client,venue_group,venue_id,accepted_only)
+        self.addSubmissions(client,venue_group,venue_id,accepted_only,decision_set)
 
-    def addSubmissions(self,client,venue_group,venue_id,accepted_only=False):
+    def addSubmissions(self,client,venue_group,venue_id,accepted_only=False,decision_set=["full"]):
         venue_group_settings = venue_group.content
         
         
@@ -24,7 +24,7 @@ class SubmissionSet:
         submission_name = venue_group_settings['submission_name']['value']
         submission_invitation = venue_group_settings['submission_id']['value']
         decision_invitation_name = venue_group_settings['decision_name']['value']
-        review_name = venue_group_settings['review_name']['value']
+        #review_name = venue_group_settings['review_name']['value']
 
         submissions = client.get_all_notes(
             invitation=submission_invitation,
@@ -35,18 +35,18 @@ class SubmissionSet:
         for s in submissions:
         
             add_this_one = False
-            if (not f'{venue_id}/-/Desk_Rejected_Submission' in s.invitations):
+                #     if (not f'{venue_id}/-/Desk_Rejected_Submission' in s.invitations):
         # print(note)
-                if (not f'{venue_id}/-/Withdrawn_Submission' in s.invitations):
-                    decision = ""
+                 #        if (not f'{venue_id}/-/Withdrawn_Submission' in s.invitations):
+            decision = ""
                 
-                    for reply in s.details['replies']:
-                        for invitation in reply['invitations']:
-                            if invitation.endswith("Decision"):
-                                decision = reply['content']['decision']['value']
+            for reply in s.details['replies']:
+                for invitation in reply['invitations']:
+                    if invitation.endswith("Decision"):
+                        decision = reply['content']['decision']['value']
                             
-                                if (decision == "Accept (Full)" or decision == "Accept (Extended Abstract)"):
-                                    add_this_one = True
+                        if ((decision == "Accept (Full)" and "full" in decision_set) or (decision == "Accept (Extended Abstract)" and "ea" in decision_set)):
+                                add_this_one = True
             if not accepted_only:
                 add_this_one = True
 
@@ -61,6 +61,33 @@ class SubmissionSet:
                 # add authors
                 author_list = s.content['authors']['value']
                 author_ids_list = s.content['authorids']['value']
+                                # print(author_list)
+                                # print(author_ids_list)
+                author_profiles = openreview.tools.get_profiles(client, author_ids_list)
+                author_list = []
+                author_id_to_name = {}
+                for profile in author_profiles:
+                    found_name = False
+                                    # print(profile)
+                    username = profile.id
+                    if (username not in author_ids_list):
+                        for name in profile.content['names']:
+                            if name['username'] in author_ids_list:
+                                username = name['username']
+                    for name in profile.content['names']:
+                        if ('preferred' in name.keys() and name['preferred']):
+                            print("adding1 " + username)
+                            author_id_to_name[username] = name['fullname']
+                            found_name = True
+                            break
+                    if (not found_name):
+                        print("adding " + username)
+                        author_id_to_name[username] = profile.content['names'][0]['fullname']
+
+                for id in author_ids_list:
+                    author_list.append(author_id_to_name[id])
+                    
+                print(author_list)
                 self.submissions[s.number].addAuthors(client,author_list,author_ids_list)
 
                 # add decision
@@ -75,6 +102,7 @@ class SubmissionSet:
                 # but not worth the trouble dealing with that...
                 print("added "+str(counter)+"th "+"submission ("+str(s.number)+")")
                 counter = counter + 1
+        print("Total submissions " + str(counter - 1))
                     
     def addReviews(self,submission,venue_id,submission_name,review_name):
 

@@ -14,11 +14,12 @@ venue_id = client_object.venue_id
 client.impersonate(venue_id)
 
 reply_type = "Decision"
-submissions = SubmissionSet(client,venue_id,True)
-
 # set submission filters
 # decisions: full, ea, reject
-decision_set = ["full"]
+decision_set = ["ea"]
+
+submissions = SubmissionSet(client,venue_id,True,decision_set)
+
 
 # tracks: "LEARN", "GTEP", "COINE", "SOPS", "RPR", "EMAS", "SIM", "HAI", "ROBOT", "IA"
 track_set = []
